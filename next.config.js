@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+module.exports = {
+  eslint: {
+    dirs: ['src'],
+  },
 
-module.exports = nextConfig
+  reactStrictMode: true,
+
+  // Uncoment to add domain whitelist
+  // images: {
+  //   domains: [
+  //     'res.cloudinary.com',
+  //   ],
+  // },
+};
