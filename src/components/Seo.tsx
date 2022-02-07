@@ -5,8 +5,7 @@ import { openGraph } from '@/lib/helper';
 const defaultMeta = {
   title: 'Social Brothers Blog',
   siteName: 'Social Brothers',
-  description:
-    'A Blog site',
+  description: 'A Blog site',
   url: '',
   type: 'website',
   robots: 'follow, index',

@@ -68,7 +68,7 @@
   /* #endregion  /**======== Typography =========== */
 
   .btn-primary {
-    @apply inline-block bg-toxicOrange text-white font-medium text-lg leading-tight uppercase rounded-full shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out;
+    @apply bg-toxicOrange inline-block text-lg font-medium leading-tight text-white uppercase rounded-full shadow-md transition duration-150 ease-in-out hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:ring-0 focus:shadow-lg focus:outline-none active:bg-yellow-700 active:shadow-lg;
   }
 
   .layout {
@@ -86,9 +86,9 @@
     @apply min-h-[calc(100vh-56px)];
   }
 
-  input[type=file]::-webkit-file-upload-button,
-  input[type=file]::file-selector-button {
-    @apply text-white bg-gray-700 rounded hover:bg-gray-600 font-medium text-sm cursor-pointer border-0 py-2.5 pl-8 pr-4;
+  input[type='file']::-webkit-file-upload-button,
+  input[type='file']::file-selector-button {
+    @apply py-2.5 pr-4 pl-8 text-sm font-medium text-white bg-gray-700 rounded border-0 cursor-pointer hover:bg-gray-600;
     margin-inline-start: -1rem;
     margin-inline-end: 1rem;
   }
