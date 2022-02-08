@@ -12,18 +12,18 @@ import { Tabs } from '@/components/tabs/Tabs';
 
 export default function HomePage() {
   const [amount, setAmount] = React.useState(4);
-  const [categories, setCategories] = React.useState([])
+  const [categories, setCategories] = React.useState([]);
   const { blog: data, getCategories, addBlogItem } = useBlog(1, amount);
 
   useEffect(() => {
-    getCategories().then(x => setCategories(x))
-  }, [])
+    getCategories().then((x) => setCategories(x));
+  }, []);
 
   const onSubmitBlog = async (e: any) => {
     // Temp solution for images
-    e.image = e.image[0].name
+    e.image = e.image[0].name;
 
-    return await addBlogItem(e)
+    return await addBlogItem(e);
   };
 
   return (
@@ -35,13 +35,11 @@ export default function HomePage() {
           <div>
             <img
               className='w-full h-auto'
-              src={
-                '/images/header.png'
-              }
+              src={'/images/header.png'}
               alt='image'
             />
             <div className='absolute top-10 right-10'>
-                <Tabs active="home"/>
+              <Tabs active='home' />
             </div>
           </div>
 
@@ -51,14 +49,17 @@ export default function HomePage() {
               {/* Create Blog */}
               <div className='px-16 pt-12 w-full text-left bg-white'>
                 <h1>Plaats een blog bericht</h1>
-                <CreateBlogForm categories={categories} onSubmit={onSubmitBlog} />
+                <CreateBlogForm
+                  categories={categories}
+                  onSubmit={onSubmitBlog}
+                />
               </div>
               {/* Blogs */}
               <div className='bg-white'>
                 <div className='grid grid-cols-2 grid-rows-2 gap-10 px-10 py-10'>
                   {data ? (
                     data.data.map((item: BlogItem, index: number) => (
-                        <BlogCard key={index} blogItem={item}/>
+                      <BlogCard key={index} blogItem={item} />
                     ))
                   ) : (
                     <h1>Nog geen blogs!</h1>

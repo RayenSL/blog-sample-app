@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 
 type Props = {
   onSubmit: (e: any) => void;
-  categories: Category[]
+  categories: Category[];
 };
 
 export const CreateBlogForm = (props: Props) => {
@@ -33,7 +33,9 @@ export const CreateBlogForm = (props: Props) => {
         id='messageName'
         placeholder='Geen titel'
       />
-        {errors.title?.type === 'required' && <p className='text-red-700'>De titel is verplicht</p>}
+      {errors.title?.type === 'required' && (
+        <p className='text-red-700'>De titel is verplicht</p>
+      )}
 
       <label
         htmlFor='category_id'
@@ -47,8 +49,12 @@ export const CreateBlogForm = (props: Props) => {
         aria-label='category_id'
         id='category_id'
       >
-          <option value={0}>Geen Categorie</option>
-          {props.categories.map((category: Category, index: number) => <option key={index} value={category.id}>{category.name}</option>)}
+        <option value={0}>Geen Categorie</option>
+        {props.categories.map((category: Category, index: number) => (
+          <option key={index} value={category.id}>
+            {category.name}
+          </option>
+        ))}
       </select>
 
       <label
@@ -74,12 +80,14 @@ export const CreateBlogForm = (props: Props) => {
       </label>
 
       <textarea
-        {...register('content', { required: true})}
+        {...register('content', { required: true })}
         className='form-control block px-3 py-1.5 m-0 w-full text-base font-normal text-gray-700 bg-clip-padding bg-gray-100 border border-gray-300 border-solid transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
         id='content'
         rows={15}
       />
-        {errors.content?.type === 'required' && <p className='text-red-700' >Het Bericht is verplicht</p>}
+      {errors.content?.type === 'required' && (
+        <p className='text-red-700'>Het Bericht is verplicht</p>
+      )}
 
       <div className='form-control flex justify-center py-14'>
         <button type='submit' className='btn-primary px-28 py-3.5'>

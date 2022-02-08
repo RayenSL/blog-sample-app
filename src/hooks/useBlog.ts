@@ -12,7 +12,7 @@ type CreateItemProps = {
 };
 
 export const useBlog = (page: number, amount: number) => {
-  console.log(page + " " + amount)
+  console.log(page + ' ' + amount);
   const {
     data: blog,
     mutate,
@@ -25,8 +25,8 @@ export const useBlog = (page: number, amount: number) => {
   };
 
   const getCategories = async () => {
-    return get(`${baseUrl}/categories`)
-  }
+    return get(`${baseUrl}/categories`);
+  };
 
   return { blog, mutate, error, loading, addBlogItem, getCategories };
 };
