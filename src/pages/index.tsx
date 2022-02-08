@@ -6,15 +6,24 @@ import Seo from '@/components/Seo';
 import { useBlog } from '@/hooks/useBlog';
 import { BlogItem } from '@/utils/types';
 import { CreateBlogForm } from '@/components/forms/CreateBlogForm';
+import { useEffect } from 'react';
+import { BlogCard } from '@/components/cards/BlogCard';
+import { Tabs } from '@/components/tabs/Tabs';
 
 export default function HomePage() {
   const [amount, setAmount] = React.useState(4);
-  const { blog: data } = useBlog(1, amount);
-  console.log(data);
+  const [categories, setCategories] = React.useState([])
+  const { blog: data, getCategories, addBlogItem } = useBlog(1, amount);
 
-  const onSubmitBlog = (e: any) => {
-    console.log(e);
-    return;
+  useEffect(() => {
+    getCategories().then(x => setCategories(x))
+  }, [])
+
+  const onSubmitBlog = async (e: any) => {
+    // Temp solution for images
+    e.image = e.image[0].name
+
+    return await addBlogItem(e)
   };
 
   return (
@@ -27,10 +36,13 @@ export default function HomePage() {
             <img
               className='w-full h-auto'
               src={
-                'https://via.placeholder.com/1920x400.jpg?text=Social+Brothers+Banner'
+                '/images/header.png'
               }
               alt='image'
             />
+            <div className='absolute top-10 right-10'>
+                <Tabs active="home"/>
+            </div>
           </div>
 
           {/* Content */}
@@ -39,35 +51,17 @@ export default function HomePage() {
               {/* Create Blog */}
               <div className='px-16 pt-12 w-full text-left bg-white'>
                 <h1>Plaats een blog bericht</h1>
-                <CreateBlogForm onSubmit={onSubmitBlog} />
+                <CreateBlogForm categories={categories} onSubmit={onSubmitBlog} />
               </div>
               {/* Blogs */}
               <div className='bg-white'>
                 <div className='grid grid-cols-2 grid-rows-2 gap-10 px-10 py-10'>
                   {data ? (
                     data.data.map((item: BlogItem, index: number) => (
-                      <div key={index} className='max-w-sm bg-white shadow-lg'>
-                        <a>
-                          <img
-                            className='ob w-full max-h-28'
-                            src={
-                              'https://mdbcdn.b-cdn.net/img/new/fluid/city/055.webp'
-                            }
-                            alt=''
-                          />
-                        </a>
-                        <div className='p-6 pb-40'>
-                          <h5 className='mb-2 text-3xl font-medium text-gray-900'>
-                            {item.title}
-                          </h5>
-                          <p className='mb-4 text-base text-gray-400'>
-                            {item.content}
-                          </p>
-                        </div>
-                      </div>
+                        <BlogCard key={index} blogItem={item}/>
                     ))
                   ) : (
-                    <h1>Loading...</h1>
+                    <h1>Nog geen blogs!</h1>
                   )}
                 </div>
 

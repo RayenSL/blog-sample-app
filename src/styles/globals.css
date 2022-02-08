@@ -77,6 +77,36 @@
     @apply mx-auto w-11/12;
   }
 
+  .activeTab {
+    @apply
+    block
+    font-medium
+    text-xl
+    text-white
+    leading-tight
+    border-x-0 border-t-0 border-b-2 border-transparent
+    px-6
+    py-3
+    my-2
+    hover:border-transparent underline decoration-toxicOrange
+    focus:border-transparent
+  }
+
+  .tab {
+    @apply
+    block
+    font-medium
+    text-xl
+    text-white
+    leading-tight
+    border-x-0 border-t-0 border-b-2 border-transparent
+    px-6
+    py-3
+    my-2
+    hover:border-transparent hover:underline decoration-toxicOrange
+    focus:border-transparent
+  }
+
   .bg-dark a.custom-link {
     @apply border-gray-200 hover:border-gray-200/0;
   }

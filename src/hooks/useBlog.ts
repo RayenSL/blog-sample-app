@@ -1,6 +1,6 @@
 import useSWR, { Fetcher, Middleware, SWRHook } from 'swr';
 import { Blog, BlogItem } from '@/utils/types';
-import { post } from '@/utils/helpers';
+import { post, get } from '@/utils/helpers';
 
 const baseUrl = 'https://frontend-case-api.sbdev.nl/api';
 
@@ -12,6 +12,7 @@ type CreateItemProps = {
 };
 
 export const useBlog = (page: number, amount: number) => {
+  console.log(page + " " + amount)
   const {
     data: blog,
     mutate,
@@ -23,5 +24,9 @@ export const useBlog = (page: number, amount: number) => {
     return post(`${baseUrl}/posts`, item).then(() => mutate());
   };
 
-  return { blog, mutate, error, loading, addBlogItem };
+  const getCategories = async () => {
+    return get(`${baseUrl}/categories`)
+  }
+
+  return { blog, mutate, error, loading, addBlogItem, getCategories };
 };

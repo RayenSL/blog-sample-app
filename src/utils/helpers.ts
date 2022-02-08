@@ -13,8 +13,10 @@ export const post = async (url: string, body?: any) => {
     body: JSON.stringify(body),
   })
     .then((res) => {
+      if (res.status === 200) res.json().then((js) => toast(js.message));
       if (res.status === 403) res.json().then((js) => toast.error(js.message));
-      return res;
+
+        return res;
     })
     .then((res) => res.json())
     .catch((err) => toast.error(err));
