@@ -16,9 +16,6 @@ export const CreateBlogForm = (props: Props) => {
     formState: { errors },
   } = useForm();
 
-  if (Object.keys(errors).length > 0) {
-  }
-
   return (
     <form onSubmit={handleSubmit(props.onSubmit)}>
       <label

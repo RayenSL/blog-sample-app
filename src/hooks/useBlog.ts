@@ -12,7 +12,6 @@ type CreateItemProps = {
 };
 
 export const useBlog = (page: number, amount: number) => {
-  console.log(page + ' ' + amount);
   const {
     data: blog,
     mutate,

@@ -4,7 +4,6 @@
 
 :root {
   /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
   --tw-clr-primary-50: 240, 249, 255;
   --tw-clr-primary-100: 224, 242, 254;
   --tw-clr-primary-200: 186, 230, 253;
@@ -45,6 +44,24 @@
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
 
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .pagination__link {
+    @apply text-toxicOrange;
+  }
+
+  .pagination__link--active a {
+    @apply h-max w-max font-bold bg-gray-300 rounded-full;
+  }
+
+  .pagination__item {
+    @apply px-10;
+  }
   /* #region  /**=========== Typography =========== */
   h1 {
     @apply font-primary text-2xl font-bold md:text-4xl;
